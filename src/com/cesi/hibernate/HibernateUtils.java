@@ -1,7 +1,12 @@
 package com.cesi.hibernate;
 
 import java.util.Properties;
-import com.cesi.hibernate.entities.Room;
+
+import com.cesi.hibernate.entities.Classes;
+import com.cesi.hibernate.entities.Formateurs;
+import com.cesi.hibernate.entities.Formations;
+import com.cesi.hibernate.entities.Salles;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -29,7 +34,10 @@ public class HibernateUtils {
                 settings.put(Environment.HBM2DDL_AUTO, "update");
 
                 configuration.setProperties(settings);
-                configuration.addAnnotatedClass(Room.class);
+                configuration.addAnnotatedClass(Classes.class);
+                configuration.addAnnotatedClass(Salles.class);
+                configuration.addAnnotatedClass(Formateurs.class);
+                configuration.addAnnotatedClass(Formations.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
