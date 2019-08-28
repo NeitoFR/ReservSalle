@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.sun.istack.internal.NotNull;
 
 @Entity
@@ -44,9 +46,13 @@ public class Formations {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Formateurs formateur;
 	
-	@JoinColumn(name = "id_Formation")
+	@JoinColumn(name = "id_Classe")
 	@OneToOne(cascade = CascadeType.ALL)
-	private Formations formation;
+	private Classes classe;
+	
+	@Column(name= "is_ApresMidi")
+	@ColumnDefault("false")
+	private Boolean is_ApresMidi;
 	
 	public int getId_Formation() {
 		return id_Formation;
