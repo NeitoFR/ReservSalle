@@ -20,13 +20,13 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="formation">
+        <a class="nav-link" href="formations">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Formation</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="formateur">
+        <a class="nav-link" href="formateurs">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Chercher formateur</span></a>
     </li>

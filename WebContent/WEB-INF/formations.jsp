@@ -3,7 +3,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<%@include file="../header.jsp" %>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Créer une formation</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="resources/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="resources/static/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
 
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -123,7 +135,14 @@
 </a>
 
 
-<%@include file="../footer.jsp" %>
+<!-- Bootstrap core JavaScript-->
+<script src="resources/static/vendor/jquery/jquery.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="resources/static/js/sb-admin-2.min.js"></script>
+
+
+<script src="resources/static/js/test.js"></script>
 </body>
 
 </html>
