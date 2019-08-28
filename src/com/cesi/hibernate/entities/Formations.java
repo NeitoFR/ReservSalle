@@ -1,6 +1,6 @@
 package com.cesi.hibernate.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -44,10 +44,20 @@ public class Formations {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Formateurs formateur;
 	
-	@JoinColumn(name = "id_Formation")
+	@JoinColumn(name = "id_Classe")
 	@OneToOne(cascade = CascadeType.ALL)
-	private Formations formation;
+	private Classes classe;
 	
+	public Formations(String nom_Formation, Date date_Debut, int nb_DemiJournees, Salles salle,
+			Formateurs formateur, Classes classe) {
+		super();
+		this.nom_Formation = nom_Formation;
+		this.date_Debut = date_Debut;
+		this.nb_DemiJournees = nb_DemiJournees;
+		this.salle = salle;
+		this.formateur = formateur;
+		this.classe = classe;
+	}
 	public int getId_Formation() {
 		return id_Formation;
 	}
@@ -75,6 +85,22 @@ public class Formations {
 	public void setDate_Debut(Date date_Debut) {
 		this.date_Debut = date_Debut;
 	}
-	
-	
+	public Salles getSalle() {
+		return salle;
+	}
+	public void setSalle(Salles salle) {
+		this.salle = salle;
+	}
+	public Formateurs getFormateur() {
+		return formateur;
+	}
+	public void setFormateur(Formateurs formateur) {
+		this.formateur = formateur;
+	}
+	public Classes getClasse() {
+		return classe;
+	}
+	public void setClasse(Classes classe) {
+		this.classe = classe;
+	}
 }

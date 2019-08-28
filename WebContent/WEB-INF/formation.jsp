@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -28,33 +29,36 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well well-sm">
-                            <form class="form-horizontal" method="post" action="formation.jsp">
+                            <form class="form-horizontal" method="post" action="formations">
                                 <fieldset>
                                     <div class="form-group">
                                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                         <div class="col-md-8">
-                                            <input id="fname" name="name" type="text" placeholder="Nom de la formation" class="form-control">
+                                            <input id="nom_Formation" name="nom_Formation" type="text" placeholder="Nom de la formation" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                         <div class="col-md-8">
-                                            <input id="startDate" name="startDate" type="date" placeholder="Date de début" class="form-control">
+                                            <input id="date_Debut" name="date_Debut" type="date" placeholder="Date de début" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                         <div class="col-md-8">
-                                            <input id="halfDay" name="halfDay" type="number" placeholder="Nombre de demie journée" class="form-control">
+                                            <input id="nb_Demi_Journee" name="nb_Demi_Journee" type="number" value="1" placeholder="Nombre de demie journée" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                                         <div class="col-md-8">
-                                            <select name="roomList" id="roomList" class="form-control">
+                                            <select name="salles_Liste" id="salles_Liste" class="form-control">
                                                 <option value="0">--- Liste des salles ---</option>
+												<c:forEach items="${sallesListe}" var="salle">
+                                                    <option value="${salle.id_Salle}">${salle.nom_Salle}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>
@@ -62,8 +66,11 @@
                                     <div class="form-group">
                                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                                         <div class="col-md-8">
-                                            <select name="formaterList" id="formaterList" class="form-control">
+                                            <select name="formateurs_Liste" id="formateurs_Liste" class="form-control">
                                                 <option value="0">--- Liste des formateurs ---</option>
+                                                <c:forEach items="${formateursListe}" var="formateur">
+                                                    <option value="${formateur.id_Formateur}">${formateur.nom}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>
@@ -71,8 +78,11 @@
                                     <div class="form-group">
                                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                                         <div class="col-md-8">
-                                            <select name="classList" id="classList" class="form-control">
+                                            <select name="classesListe" id="classesListe" class="form-control">
                                                 <option value="0">--- Liste des classes ---</option>
+                                                <c:forEach items="${classesListe}" var="classe">
+                                                    <option value="${classe.id_Classe}">${classe.nom_Classe}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>

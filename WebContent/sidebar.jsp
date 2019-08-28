@@ -20,9 +20,15 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="formation.jsp">
+        <a class="nav-link" href="formation">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Formation</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="formateur">
+            <i class="fas fa-fw fa-book-open"></i>
+            <span>Chercher formateur</span></a>
     </li>
 
     <!-- Divider -->
