@@ -55,6 +55,10 @@
                                         <div class="col-md-8">
                                             <select name="roomList" id="roomList" class="form-control">
                                                 <option value="0">--- Liste des salles ---</option>
+                                                ${room.idRoom}
+                                                <c:forEach items="roomList" var="room">
+                                                    <option value="${room.idRoom}">${room.name}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>

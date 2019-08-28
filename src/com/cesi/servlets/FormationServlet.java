@@ -25,8 +25,10 @@ public class FormationServlet extends Dispatcher{
             System.out.println("YOLO");
             transaction = session.beginTransaction();
 
-            List <Room> rooms = (List <Room>) session.createSQLQuery("SELECT name FROM Room").getResultList();
-            rooms.forEach(r -> System.out.println(r.getName()));
+           List <Room> roomList = (List <Room>) session.createQuery("from Room").getResultList();
+            roomList.forEach(room -> System.out.println(room.getName()));
+            
+            request.setAttribute("roomList", roomList);
 
             transaction.commit();
         } catch (Exception e) {

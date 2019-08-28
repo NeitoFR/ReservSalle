@@ -49,6 +49,7 @@ public class Room {
         this.placeNumber = placeNumber;
     }
 
+
     @Column(name="idType")
     public int getIdType() {
         return idType;
