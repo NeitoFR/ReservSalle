@@ -20,24 +20,24 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="formation">
+        <a class="nav-link" href="formations">
             <i class="fas fa-fw fa-book-open"></i>
-            <span>Formation</span></a>
+            <span>Planifier une formation</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="formateur">
+        <a class="nav-link" href="chercher-formateur">
             <i class="fas fa-fw fa-book-open"></i>
-            <span>Chercher formateur</span></a>
+            <span>Chercher infos formateur</span></a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- <hr class="sidebar-divider"> -->
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="calendrier">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Calendrier</span></a>
     </li>
 
     <!-- Divider -->

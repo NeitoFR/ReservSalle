@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,12 +21,11 @@ import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "FormationServlet", urlPatterns = "/formations")
-public class FormationServlet extends Dispatcher{
+public class FormationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unchecked")
-	@Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FormationServlet doGet");
         Transaction transaction = null;
         System.out.println("Init Connexion - Hibernate");
@@ -57,7 +57,6 @@ public class FormationServlet extends Dispatcher{
         this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
     }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	Date dateParser = null;
     	final String nom_Formation = request.getParameter("nom_Formation");
