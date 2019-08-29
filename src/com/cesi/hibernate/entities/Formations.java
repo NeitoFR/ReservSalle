@@ -54,6 +54,10 @@ public class Formations {
 	@ColumnDefault("false")
 	private Boolean is_ApresMidi;
 	
+	public Formations() {
+		super();
+	}
+	
 	public Formations(String nom_Formation, Date date_Debut, int nb_DemiJournees, Salles salle,
 			Formateurs formateur, Classes classe) {
 		super();

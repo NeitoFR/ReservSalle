@@ -29,6 +29,9 @@ public class Formateurs {
 	@Column(name="tel")
     private String tel;
     
+	public Formateurs(){
+		super();
+	}
     
 	public int getId_Formateur() {
 		return id_Formateur;

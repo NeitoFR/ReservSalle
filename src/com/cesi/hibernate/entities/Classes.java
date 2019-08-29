@@ -26,6 +26,9 @@ public class Classes {
 	@Column(name="nb_Etudiant")
 	private int nb_Etudiant;
 	
+	public Classes(){
+		super();
+	}
 	
 	public int getId_Classe() {
 		return id_Classe;

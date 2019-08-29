@@ -30,7 +30,10 @@ public class Salles {
 		@Column(name="type")
         private int type;
         
-        
+		public Salles(){
+			super();
+		}
+		
         public int getId_Salle() {
                 return id_Salle;
         }
