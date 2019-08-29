@@ -54,6 +54,7 @@ public class Formations {
 	@ColumnDefault("false")
 	private Boolean is_ApresMidi;
 	
+	
 	public Formations() {
 		super();
 	}
@@ -113,4 +114,12 @@ public class Formations {
 	public void setClasse(Classes classe) {
 		this.classe = classe;
 	}
+	public Boolean getIs_ApresMidi() {
+		return is_ApresMidi;
+	}
+
+	public void setIs_ApresMidi(Boolean is_ApresMidi) {
+		this.is_ApresMidi = is_ApresMidi;
+	}
+
 }

@@ -63,9 +63,9 @@ public class ChercherFomateurServlet extends HttpServlet  {
 			
 			final List<Formations> relatedFormations = (List<Formations>) session.createQuery("select formation from Formations formation where formation.formateur.id_Formateur="+id_Formateur).list();
 			
-			relatedFormations.forEach(f -> {
-				System.out.println(f.getNom_Formation());
-			});
+			request.setAttribute("selectedFormateur", formateur);
+			request.setAttribute("resultFormations", relatedFormations);
+			
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -79,5 +79,4 @@ public class ChercherFomateurServlet extends HttpServlet  {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/resultat_formateur.jsp").forward(request, response);
 		}
 	}
-
 }
