@@ -57,58 +57,36 @@ public class FormationServlet extends HttpServlet {
         this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
     }
 
+	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	Date dateParser = null;
-    	final String nom_Formation = request.getParameter("nom_Formation");
-        String date_Debut = request.getParameter("date_Debut");
-        final int nb_Demi_Journee = Integer.parseInt(request.getParameter("nb_Demi_Journee"));
-        final int id_Salles = Integer.parseInt(request.getParameter("salles_Liste"));
-        final int id_Formateurs = Integer.parseInt(request.getParameter("formateurs_Liste"));
-        final int id_Classes = Integer.parseInt(request.getParameter("classesListe"));
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            System.out.println("Parsing en cours");
-            dateParser = formatter.parse(date_Debut);
-            System.out.println(dateParser);
-            date_Debut = formatter.format(dateParser);
-            System.out.println("Parsing fini");
-
-        } catch (ParseException e) {
-            System.out.println("Erreur lors du parsing de la date de début : " + e);
-        }
-        
-    	final Salles salles = new Salles();
-    	salles.setId_Salle(id_Salles);
-        
-    	final Formateurs formateurs = new Formateurs();
-    	formateurs.setId_Formateur(id_Formateurs);
-        
-    	final Classes classes = new Classes();
-    	classes.setId_Classe(id_Classes);
-    	final Formations formations = new Formations(nom_Formation, dateParser, nb_Demi_Journee, salles, formateurs, classes);
-    	
-    	
-    	Transaction transaction = null;
+        final String nom_Formation = request.getParameter("nom_Formation");
+        final String date_Debut = request.getParameter("date_Debut");
+        final String nb_Demi_Journee = request.getParameter("nb_Demi_Journee");
+        final String id_Salle = request.getParameter("salles_Liste");
+        final String id_Formateur = request.getParameter("formateurs_Liste");
+        final String id_Classe = request.getParameter("classesListe");
+        final String is_ApresMidi = request.getParameter("apresMidiCheck");
+        Transaction transaction = null;
         Session session = null;
-        
+
         try {
-        	session = HibernateUtils.getSessionFactory().getCurrentSession();
-        	transaction = session.beginTransaction();
-        	
-        	session.save(formations);
-        	transaction.commit();
+            session = HibernateUtils.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            final String sqlQuery = "INSERT INTO FORMATIONS (date_Debut, nom_Formation, nb_DemiJournees, id_Classe, id_Formateur, id_Salle, is_ApresMidi) "
+                    + "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', '" + nb_Demi_Journee + "', '" + id_Salle + "', '" + id_Formateur + "', '" + id_Classe + "', " + is_ApresMidi + ")";
+            session.createSQLQuery(sqlQuery).executeUpdate();
+
+            transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
-              transaction.rollback();
+                transaction.rollback();
             }
             e.printStackTrace();
-         } finally {
+        } finally {
             if (session != null) {
-              session.close();
+                session.close();
             }
         }
-    	
-//        this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
+        this.doGet(request, response);
     }
 }
