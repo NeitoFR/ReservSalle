@@ -27,21 +27,15 @@
 
     <li class="nav-item">
         <a class="nav-link" href="formateurs">
-            <i class="fas fa-fw fa-book-open"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Chercher formateur</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+        <a class="nav-link" href="calendrier">
+            <i class="fas fa-fw fa-calendar-alt"></i>
+            <span>Voir le calendrier</span></a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

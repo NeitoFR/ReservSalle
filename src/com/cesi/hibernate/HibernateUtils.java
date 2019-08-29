@@ -15,11 +15,11 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtils {
     private static SessionFactory sessionFactory;
-    //private static StandardServiceRegistry registry;
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
+        		System.out.println("Init Connexion - Hibernate");
                 Configuration configuration = new Configuration();
 
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
