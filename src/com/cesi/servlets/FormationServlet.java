@@ -61,16 +61,18 @@ public class FormationServlet extends HttpServlet{
 		final String id_Salle = request.getParameter("salles_Liste");
 		final String id_Formateur = request.getParameter("formateurs_Liste");
 		final String id_Classe = request.getParameter("classesListe");
+		final String apres_Midi = request.getParameter("apres_Midi");
 
 		Transaction transaction = null;
 		Session session = null;
+		int querySuccess = -1;
 
 		try {
 			session = HibernateUtils.getSessionFactory().getCurrentSession();
 			transaction = session.beginTransaction();
 			final String sqlQuery = "INSERT INTO FORMATIONS (date_Debut, nom_Formation, nb_DemiJournees, id_Classe, id_Formateur, id_Salle, is_ApresMidi) "
-					+ "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', '" + nb_Demi_Journee + "', '" + id_Salle + "', '" + id_Formateur + "', '" + id_Classe + "', " + false + ")";
-			session.createSQLQuery(sqlQuery).executeUpdate();
+					+ "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', " + nb_Demi_Journee + ", " + id_Salle + ", " + id_Formateur + ", " + id_Classe + ", " + apres_Midi + ")";
+			querySuccess = session.createSQLQuery(sqlQuery).executeUpdate();
 
 			transaction.commit();
 		} catch (Exception e) {
@@ -83,7 +85,13 @@ public class FormationServlet extends HttpServlet{
 				session.close();
 			}
 		}
-
-		//        this.getServletContext().getRequestDispatcher("/WEB-INF/formations.jsp").forward(request, response);
+		
+		if(querySuccess > 0) {
+			request.setAttribute("querySuccess", true);
+		} else {
+			request.setAttribute("querySuccess", false);
+		}
+		
+		this.doGet(request, response);
 	}
 }

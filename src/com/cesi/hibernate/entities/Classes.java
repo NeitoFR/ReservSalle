@@ -25,7 +25,10 @@ public class Classes {
 	private	String nom_Classe;
 	@Column(name="nb_Etudiant")
 	private int nb_Etudiant;
-	
+
+	public Classes() {
+		super();
+	}
 	
 	public int getId_Classe() {
 		return id_Classe;

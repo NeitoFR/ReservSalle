@@ -22,27 +22,29 @@ public class CalendrierServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("CalendrierServlet doGet");
-//		Transaction transaction = null;
-//		Session session = null;
+		Transaction transaction = null;
+		Session session = null;
 
-//		try {
-//			session = HibernateUtils.getSessionFactory().getCurrentSession();
-//			transaction = session.beginTransaction();
-//
-//			List<Formations> fomationsListe = (List<Formations>) session.createQuery("from Formations").getResultList();
-//
-//			request.setAttribute("fomationsListe", fomationsListe);
-//			transaction.commit();
-//		} catch (Exception e) {
-//			if (transaction != null) {
-//				transaction.rollback();
-//			}
-//			e.printStackTrace();
-//		} finally {
-//			if (session != null) {
-//				session.close();
-//			}
-//		}
+		try {
+			session = HibernateUtils.getSessionFactory().getCurrentSession();
+			transaction = session.beginTransaction();
+
+			List<Formations> calendrierListe = (List<Formations>) session.createQuery("from Formations").getResultList();
+
+			calendrierListe.forEach(formation -> System.out.println(formation.getFormateur().getNom()));
+			
+			request.setAttribute("calendrierListe", calendrierListe);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/calendrier.jsp").forward(request, response);
 	}

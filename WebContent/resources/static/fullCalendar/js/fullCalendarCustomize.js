@@ -1,6 +1,36 @@
+var calendrierListe = '${calendrierListe}'
+				console.log(calendrierListe)
+
 $(document)
 .ready(
 		function() {
+			
+			var array = [];
+			var calendrierListe = '${calendrierListe}'
+				console.log(calendrierListe)
+				calendrierListe.forEach(calendrier => {
+					console.log(calendrier.nom_Formation)
+					console.log(calendrier.date_Debut)
+					var json = {
+							title: calendrier,
+							start : new Date(
+									y,
+									m,
+									d,
+									12,
+									0),
+									end : new Date(
+											y,
+											m,
+											d,
+											14,
+											0),
+											allDay : false,
+					}
+					jsonArray.push(json)
+				});
+			
+			
 			var date = new Date();
 			var d = date.getDate();
 			var m = date.getMonth();
@@ -123,7 +153,6 @@ $(document)
 							}
 
 						},
-
 						events : [
 							{
 								title : 'All Day Event',

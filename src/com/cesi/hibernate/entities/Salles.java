@@ -29,7 +29,10 @@ public class Salles {
         private int nb_Salle;
 		@Column(name="type")
         private int type;
-        
+
+		public Salles() {
+			super();
+		}
         
         public int getId_Salle() {
                 return id_Salle;

@@ -37,6 +37,14 @@
 							<div class="col-md-12">
 								<div class="well well-sm mt-5 mb-5">
 									<div class="card shadow mb-4">
+										<c:if test="${querySuccess}">
+											<div class="alert alert-success alert-dismissible fade show" role="alert">
+												<strong>Enregistrement réussi !</strong> Voulez-vous être redirigé vers le <a href="calendrier" >calendrier</a>. 
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												  <span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										</c:if>
 										<div class="card-header py-3">
 											<h6 class="m-0 font-weight-bold text-primary">Ajouter
 												une formation</h6>
@@ -68,18 +76,7 @@
 															class="fa fa-number bigicon"></i></span>
 														<div class="col-md-12">
 															<input id="nb_Demi_Journee" name="nb_Demi_Journee"
-																type="number"
-																placeholder="Nombre de demie journée"
-																class="form-control">
-														</div>
-													</div>
-
-													<div class="form-group">
-														<span class="col-md-1 col-md-offset-2 text-center"><i
-															class="fa fa-number bigicon"></i></span>
-														<div class="col-md-12">
-															<input id="apres_Midi" name="nb_Demi_Journee"
-																type="checkbox"
+																type="number" min="1"
 																placeholder="Nombre de demie journée"
 																class="form-control">
 														</div>
@@ -126,6 +123,16 @@
 															</select>
 														</div>
 													</div>
+								                    
+								                    <div class="form-group">
+			                                            <div class="custom-control custom-checkbox small col-md-8">
+			                                                <input type="checkbox" class="custom-control-input"
+			                                                    id="apres_Midi" name="apres_Midi" value="1"> <label
+			                                                    class="custom-control-label" for="apres_Midi">Commence
+			                                                    l'après midi ?</label>
+			                                                <input id='apres_Midi_Hidden' type='hidden' value='0' name='apres_Midi'>
+			                                            </div>
+			                                        </div>
 
 													<div class="form-group">
 														<div class="col-md-12 text-center">
@@ -156,6 +163,7 @@
   
 	<!-- Custom scripts for all pages-->
 	<script src="resources/static/js/sb-admin-2.min.js"></script>
+	
 </body>
 
 </html>
