@@ -3,3 +3,6 @@ out
 .settings/
 build/
 .class*
+JSPTraining.iml
+classes/
+lib/

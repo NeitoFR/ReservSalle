@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,6 +22,18 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Recherche formateur</h1>
                 </div>
+
+                <form class="form-horizontal" method="post" action="formations">
+                    <fieldset>
+                        <select name="nom_Formateur" id="nom_Formateur">
+                            <option value="">--Please choose an option--</option>
+                            <c:forEach var="p" items="${formateursListe}">
+                                <option value='<c:out value="${p.id_Formateur}"/>'><c:out value="${p.nom}"/></option>
+                            </c:forEach>
+                        </select>
+                        <button type="button" class="btn btn-primary" name="rechercher" id="rechercher">Rechercher</button>
+                    </fieldset>
+                </form>
             </div>
             <!-- /.container-fluid -->
 
