@@ -14,12 +14,6 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-        <a class="nav-link" href="index.jsp">
-            <i class="fas fa-fw fa-door-open"></i>
-            <span>Réservation des salles</span></a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link" href="formations">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Formation</span></a>

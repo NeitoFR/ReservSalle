@@ -100,8 +100,11 @@
 	<script
 		src="resources/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-	<!-- Page level custom scripts -->
-	<script src="resources/static/js/demo/datatables-demo.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  $('#dataTable').DataTable();
+		});
+	</script>
 </body>
 
 </html>

@@ -110,8 +110,6 @@ function() {
 		var mois = date.split("-")[1] - 1;
 		var jour = date.split("-")[2].substring(0,2);
 		var hour = isDemiJournee == "true" ? 12 : 0;
-		console.log("isDemiJournee", isDemiJournee)
-		console.log("hour", hour)
 		
 		return new Date(annee, mois, jour, hour);
 	}
