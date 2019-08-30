@@ -22,6 +22,10 @@
     margin: 0 auto;
     min-width: 80% /* value of your choice which suits your alignment */
 }
+
+.important {
+	color: red;
+}
 </style>
 
 </head>
@@ -60,6 +64,7 @@
 															<input id="nom_Formation" name="nom_Formation"
 																type="text" placeholder="Nom de la formation"
 																class="form-control">
+															<span class="important" id="erreurNomFormation"></span>
 														</div>
 													</div>
 													<div class="form-group">
@@ -68,6 +73,7 @@
 														<div class="col-md-12">
 															<input id="date_Debut" name="date_Debut" type="date"
 																placeholder="Date de début" class="form-control">
+															<span class="important" id="erreurDateDebut"></span>
 														</div>
 													</div>
 
@@ -79,6 +85,7 @@
 																type="number" min="1"
 																placeholder="Nombre de demie journée"
 																class="form-control">
+															<span class="important" id="erreurDemiJournee"></span>
 														</div>
 													</div>
 
@@ -93,6 +100,7 @@
 																	<option value="${salle.id_Salle}">${salle.nom_Salle}</option>
 																</c:forEach>
 															</select>
+															<span class="important" id="erreurSalles"></span>
 														</div>
 													</div>
 
@@ -107,6 +115,7 @@
 																	<option value="${formateur.id_Formateur}">${formateur.nom}</option>
 																</c:forEach>
 															</select>
+															<span class="important" id="erreurFormateurs"></span>
 														</div>
 													</div>
 
@@ -114,13 +123,14 @@
 														<span class="col-md-1 col-md-offset-2 text-center"><i
 															class="fa fa-users bigicon"></i></span>
 														<div class="col-md-12">
-															<select name="classesListe" id="classesListe"
+															<select name="classes_Liste" id="classes_Liste"
 																class="form-control">
 																<option value="0">--- Liste des classes ---</option>
 																<c:forEach items="${classesListe}" var="classe">
 																	<option value="${classe.id_Classe}">${classe.nom_Classe}</option>
 																</c:forEach>
 															</select>
+															<span class="important" id="erreurClasses"></span>
 														</div>
 													</div>
 								                    
@@ -136,7 +146,7 @@
 
 													<div class="form-group">
 														<div class="col-md-12 text-center">
-															<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+															<button id="enregistrementFormation" name="enregistrementFormation" type="submit" class="btn btn-primary btn-lg">Enregistrement</button>
 														</div>
 													</div>
 												</fieldset>
@@ -163,6 +173,7 @@
   
 	<!-- Custom scripts for all pages-->
 	<script src="resources/static/js/sb-admin-2.min.js"></script>
+	<script src="resources/static/js/formations.js"></script>
 	
 </body>
 

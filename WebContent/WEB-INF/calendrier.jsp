@@ -136,8 +136,6 @@ function() {
 	        </c:forEach>
 	   ];
 	
-	console.log(calendrierListe)
-	
 	var date = new Date();
 	var d = date.getDate();
 	var m = date.getMonth();

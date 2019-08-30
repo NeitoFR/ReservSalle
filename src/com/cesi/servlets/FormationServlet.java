@@ -23,7 +23,6 @@ public class FormationServlet extends HttpServlet{
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("FormationServlet doGet");
 		Transaction transaction = null;
 		Session session = null;
 
@@ -60,7 +59,7 @@ public class FormationServlet extends HttpServlet{
 		final String nb_Demi_Journee = request.getParameter("nb_Demi_Journee");
 		final String id_Salle = request.getParameter("salles_Liste");
 		final String id_Formateur = request.getParameter("formateurs_Liste");
-		final String id_Classe = request.getParameter("classesListe");
+		final String id_Classe = request.getParameter("classes_Liste");
 		final String apres_Midi = request.getParameter("apres_Midi");
 
 		Transaction transaction = null;

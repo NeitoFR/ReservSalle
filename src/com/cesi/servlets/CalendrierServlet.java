@@ -21,7 +21,6 @@ public class CalendrierServlet extends HttpServlet{
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("CalendrierServlet doGet");
 		Transaction transaction = null;
 		Session session = null;
 
@@ -30,8 +29,6 @@ public class CalendrierServlet extends HttpServlet{
 			transaction = session.beginTransaction();
 
 			List<Formations> calendrierListe = (List<Formations>) session.createQuery("from Formations").getResultList();
-
-			calendrierListe.forEach(formation -> System.out.println(formation.getFormateur().getNom()));
 			
 			request.setAttribute("calendrierListe", calendrierListe);
 			transaction.commit();

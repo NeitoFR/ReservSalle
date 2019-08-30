@@ -21,7 +21,6 @@ public class FormateurServlet extends HttpServlet{
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("FormateurServlet doGet");
 		Transaction transaction = null;
 		Session session = null;
 
