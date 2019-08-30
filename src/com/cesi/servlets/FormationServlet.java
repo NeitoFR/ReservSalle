@@ -3,9 +3,7 @@ package com.cesi.servlets;
 import com.cesi.hibernate.HibernateUtils;
 import com.cesi.hibernate.entities.Classes;
 import com.cesi.hibernate.entities.Formateurs;
-import com.cesi.hibernate.entities.Formations;
 import com.cesi.hibernate.entities.Salles;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -15,9 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "FormationServlet", urlPatterns = "/formations")
@@ -75,7 +70,6 @@ public class FormationServlet extends HttpServlet {
             final String sqlQuery = "INSERT INTO FORMATIONS (date_Debut, nom_Formation, nb_DemiJournees, id_Classe, id_Formateur, id_Salle, is_ApresMidi) "
                     + "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', '" + nb_Demi_Journee + "', '" + id_Salle + "', '" + id_Formateur + "', '" + id_Classe + "', " + is_ApresMidi + ")";
             session.createSQLQuery(sqlQuery).executeUpdate();
-
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

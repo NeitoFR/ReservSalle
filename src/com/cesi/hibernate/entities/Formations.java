@@ -1,22 +1,10 @@
 package com.cesi.hibernate.entities;
 
-import java.util.Date;
-
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
+import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 
-import com.sun.istack.internal.NotNull;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "FORMATIONS",
@@ -28,7 +16,9 @@ public class Formations {
 	@NotNull
 	@Column(name="id_Formation")
 	private int id_Formation;
-	
+	public Formations(){
+		super();
+	}
 	@Column(name="nom_Formation")
 	private String nom_Formation;
 	
@@ -108,5 +98,13 @@ public class Formations {
 	}
 	public void setClasse(Classes classe) {
 		this.classe = classe;
+	}
+
+	public Boolean getIs_ApresMidi() {
+		return is_ApresMidi;
+	}
+
+	public void setIs_ApresMidi(Boolean is_ApresMidi) {
+		this.is_ApresMidi = is_ApresMidi;
 	}
 }

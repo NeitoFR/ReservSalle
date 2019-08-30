@@ -150,7 +150,7 @@
 	$(document).ready(function() {
 
 		var eventsList = [];
-        console.log("${}")
+        <%--console.log("${}")--%>
 		var date = new Date();
 		date.setHours(date.getHours() + 14);
 

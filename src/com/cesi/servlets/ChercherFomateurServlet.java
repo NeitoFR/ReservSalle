@@ -2,6 +2,7 @@ package com.cesi.servlets;
 
 import com.cesi.hibernate.HibernateUtils;
 import com.cesi.hibernate.entities.Formateurs;
+import com.cesi.hibernate.entities.Formations;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,12 +17,14 @@ import java.util.List;
 @WebServlet(name = "ChercherFomateurServlet", urlPatterns = "/chercher-formateur")
 public class ChercherFomateurServlet extends HttpServlet  {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		System.out.println("Chercher Formateur doGet");
 		Transaction transaction = null;
 		System.out.println("Init Connexion - Hibernate");
 		Session session = null;
 
 		try {
+
 			session = HibernateUtils.getSessionFactory().getCurrentSession();
 			transaction = session.beginTransaction();
 
@@ -42,37 +45,70 @@ public class ChercherFomateurServlet extends HttpServlet  {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/chercher_formateur.jsp").forward(request, response);
     }
 
-
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		final String nom_Formation = request.getParameter("nom_Formation");
-		final String date_Debut = request.getParameter("date_Debut");
-		final String nb_Demi_Journee = request.getParameter("nb_Demi_Journee");
-		final String id_Salle = request.getParameter("salles_Liste");
-		final String id_Formateur = request.getParameter("formateurs_Liste");
-		final String id_Classe = request.getParameter("classesListe");
-		final String is_ApresMidi = request.getParameter("apresMidiCheck");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("########## Formateur call get : Enter step ##########");
+		final String id_Formateur = request.getParameter("nom_Formateur");
+		System.out.println("########## Formateur call get : Enter step ##########"+id_Formateur);
 		Transaction transaction = null;
+		List<Formations> result = null;
 		Session session = null;
-
 		try {
 			session = HibernateUtils.getSessionFactory().getCurrentSession();
 			transaction = session.beginTransaction();
-			final String sqlQuery = "INSERT INTO FORMATIONS (date_Debut, nom_Formation, nb_DemiJournees, id_Classe, id_Formateur, id_Salle, is_ApresMidi) "
-					+ "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', '" + nb_Demi_Journee + "', '" + id_Salle + "', '" + id_Formateur + "', '" + id_Classe + "', " + is_ApresMidi + ")";
-			session.createSQLQuery(sqlQuery).executeUpdate();
-
+			result = (List<Formations>) session.createQuery("select formation from Formations formation where formation.formateur.id_Formateur="+id_Formateur).list();
+//			session.createQuery("select formation from Formations formation where formation.formateur.id_Formateur="+nom_Formateur).list();
+////			final String sqlQuery = "INSERT INTO FORMATIONS (date_Debut, nom_Formation, nb_DemiJournees, id_Classe, id_Formateur, id_Salle, is_ApresMidi) "
+////					+ "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', '" + nb_Demi_Journee + "', '" + id_Salle + "', '" + id_Formateur + "', '" + id_Classe + "', " + is_ApresMidi + ")";
+			request.setAttribute("formation_Formateur", result);
+			System.out.println("Formateur call post : 2nd step" + result);
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
 			}
+			System.out.println("Formateur call post 1st error :"+e);
 			e.printStackTrace();
 		} finally {
 			if (session != null) {
 				session.close();
 			}
 		}
-		this.doGet(request, response);
+		System.out.println("Formateur call post : "+result.get(0).getSalle());
+//        this.doGet(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/resultatrecherche.jsp").forward(request, response);
+
 	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("######### Formateur call post : Enter step ##########");
+//		this.getServletContext().getRequestDispatcher("/WEB-INF/resultatrecherche.jsp").forward(request, response);
+//	}
+//		final String id_Formateur = request.getParameter("nom_Formateur");
+//		Transaction transaction = null;
+//		System.out.println("Formateur call post 1st step : "+id_Formateur);
+//		List<Formations> result = null;
+//		Session session = null;
+//		try {
+//			session = HibernateUtils.getSessionFactory().getCurrentSession();
+//			transaction = session.beginTransaction();
+//			result = session.createQuery("select formation from Formations formation where formation.formateur.id_Formateur="+id_Formateur).list();
+////			session.createQuery("select formation from Formations formation where formation.formateur.id_Formateur="+nom_Formateur).list();
+//////			final String sqlQuery = "INSERT INTO FORMATIONS (date_Debut, nom_Formation, nb_DemiJournees, id_Classe, id_Formateur, id_Salle, is_ApresMidi) "
+//////					+ "VALUES ('" + date_Debut  + "', '" + nom_Formation + "', '" + nb_Demi_Journee + "', '" + id_Salle + "', '" + id_Formateur + "', '" + id_Classe + "', " + is_ApresMidi + ")";
+//			System.out.println("Formateur call post : 2nd step");
+//			transaction.commit();
+//		} catch (Exception e) {
+//			if (transaction != null) {
+//				transaction.rollback();
+//			}
+//			System.out.println("Formateur call post 1st error :"+e);
+//			e.printStackTrace();
+//		} finally {
+//			if (session != null) {
+//				session.close();
+//			}
+//		}
+//		System.out.println("Formateur call post : "+result.get(0).getSalle());
+//		this.doGet(request, response);
+//	}
 }
